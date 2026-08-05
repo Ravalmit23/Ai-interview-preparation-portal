@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <div class="navigation-bar">
-            <span id="logo">🧠InterviewMentor    <span id="ai">AI</span></span>
+            <span id="logo">🧠InterviewMentor     <span id="ai">AI</span></span>
             <a>Home</a>
             <a>Practice</a>
             <a>Features</a>
@@ -15,6 +15,26 @@
             <button>Log-in</button>
             <!-- <button>sign-up</button> -->
         </div>
+        <div class="hero-section">
+           <div class="left-side">
+           Start your practice Today! <span id="text"></span><br>
+            <span id="element"></span>
+            <p>This is a portal that remove fear of your interview <br>and practice multiple interview quetions</p>
+           </div>
+           <div class="right-side">
+            <img src="{% static 'images/images.jpg' %}" alt="Hero Image">
+ 
+           </div>
+        </div>
+
     </div>
+    <script src="https://unpkg.com/typed.js@3.0.0/dist/typed.umd.js"></script>
+    <!-- Setup and start animation! -->
+    <script>
+        var typed = new Typed('#element', {
+            strings: ['And build your confidence','improve your technical knowledge'],
+            typeSpeed: 50,
+        });
+    </script>
 </body>
 </html>
