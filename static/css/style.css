@@ -6,13 +6,36 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #191D32;
+    background-color: #0f172a;
     height: 70px;
+}
+.navigation-bar #logo:hover{
+    text-decoration: none;
 }
 .navigation-bar a{
     text-decoration: none;
     margin-top: 5px;
-    color: white;
+    color: #ffffff;
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
+}
+.navigation-bar a:hover{
+    color: #3b82f6;
+}
+.navigation-bar #logo:hover{
+    color: white;
+}
+.navigation-bar button{
+    height: 25px;
+    width: 70px;
+    background-color: #2563eb;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.navigation-bar button:hover{
+    transition: 1.2s;
+    transform: scale(1.05);
 }
