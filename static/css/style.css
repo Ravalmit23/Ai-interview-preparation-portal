@@ -51,8 +51,7 @@
     transform: scale(1.05);
     border: 1px solid white;
 }
-.hero-section{
-    display: flex;
-    justify-content: space-evenly;
-    
+.right-side img{
+    height:100px;
+    width: 30%;
 }
