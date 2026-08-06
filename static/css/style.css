@@ -2,22 +2,25 @@
     margin:0;
     padding: 0;
 }
+body{
+    background-color: #eff6ff;/
+}
 .navigation-bar #logo{
-    color:white;
-    font-family: 'Poppins', sans-serif;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .navigation-bar #ai{
     color:#4361ee;
 
 }
 .navigation-bar span{
-    font-size: 1.05rem;
+    font-size: 1.3rem;
 }
 .navigation-bar{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #0f172a;
+    background-color: #eff6ff;
     height: 70px;
 }
 .navigation-bar #logo:hover{
@@ -26,8 +29,9 @@
 .navigation-bar a{
     text-decoration: none;
     margin-top: 5px;
-    color: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2rem;
     cursor: pointer;
     
 }
@@ -49,9 +53,59 @@
 .navigation-bar button:hover{
     transition: 1.2s;
     transform: scale(1.05);
-    border: 1px solid white;
+    border: 1px solid #3b82f6;
+}
+.hero-section{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1px;
+    /* color: white; */
+}
+.right-side{
+    box-shadow: 0 15px 40px rgba(25, 24, 24, 0.15);
+    border-radius: 10px;
 }
 .right-side img{
-    height:100px;
-    width: 30%;
+    height: 300px;
+    width: 520px;
+    border-radius: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.left-side span,p{
+    font-size: 1.1rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-left: 10px;
+}
+.left-side span{
+    margin-bottom:5px;
+}
+.left-side #text{
+    color: #2563eb;
+}
+.left-side #element{
+    color: #3b82f6;
+    font-size: 1.5rem;
+}
+.left-side button{
+    height: 35px;
+    width: 95px;
+    margin-left: 120px;
+    color: white;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+.left-side button:hover{
+    transition: 0.2s ease;
+    transform: scale(1.02);
+    border: 1px solid white;
+}
+.text #feedback{
+    font-size: 0.8rem;
+    text-indent: 50px;
+    margin-top: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
