@@ -144,10 +144,6 @@ body{
     height: 320px;
     border-radius: 20px;
 }
-.student-area a,p,h4,.admin-area a,p,h4{
-    margin-left: 10px;
-
-}
 .student-area p,.admin-area p{
     margin-top: 10px;
 }
@@ -161,8 +157,8 @@ body{
     border: none;
     height: 30px;
     border-radius: 10px;
-    margin-top:20px;
-    margin-left: 80px;
+    margin-top:40px;
+    margin-left: 70px;
     text-align: center;
 }
 .content-area button:hover{
@@ -174,5 +170,18 @@ body{
     margin-top: 10px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.student-area:hover{
+    cursor: pointer;
+    transition: 0.2s ease;
+    transform: scale(1.04);
+    border:2px solid #2563eb;
+}
+
+.admin-area:hover{
+    cursor: pointer;
+    transition: 0.2s ease;
+    transform: scale(1.04);
+    border:2px solid #2563eb;
 }
 
