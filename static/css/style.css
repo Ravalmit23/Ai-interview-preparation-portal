@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: #eff6ff;/
+    background-color: #eff6ff;
 }
 .navigation-bar #logo{
     color:black;
@@ -11,7 +11,7 @@ body{
 }
 .navigation-bar #ai{
     color:#4361ee;
-
+    font-size: 1.3rem;
 }
 .navigation-bar span{
     font-size: 1.3rem;
@@ -41,7 +41,7 @@ body{
     transform: scale(1.03);
 }
 .navigation-bar button{
-    height: 25px;
+    height: 30px;
     width: 70px;
     background-color: #2563eb;
     color: #ffffff;
@@ -51,16 +51,14 @@ body{
 }
 
 .navigation-bar button:hover{
-    transition: 1.2s;
+    transition: 0.3s;
     transform: scale(1.05);
-    border: 1px solid #3b82f6;
 }
 .hero-section{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 1px;
-    /* color: white; */
 }
 .right-side{
     box-shadow: 0 15px 40px rgba(25, 24, 24, 0.15);
@@ -86,9 +84,9 @@ body{
 }
 .left-side #element{
     color: #3b82f6;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
-.left-side button{
+.left-side #hero-btn,#top-btn{
     height: 35px;
     width: 95px;
     margin-left: 120px;
@@ -102,10 +100,24 @@ body{
     transition: 0.2s ease;
     transform: scale(1.02);
     border: 1px solid white;
+    cursor: pointer;
+}
+.left-side p{
+    margin-top: 10px;
 }
 .text #feedback{
     font-size: 0.8rem;
     text-indent: 50px;
     margin-top: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.hero-section #top-btn{
+    width: 170px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+#top-btn{
+    transition: none;
+    transform: none;
+    cursor: default;
 }
