@@ -233,6 +233,10 @@ body{
 .top-area h2{
     text-align: center;
 }
+#content-line1{
+    border: 0.9px solid purple;
+
+}
 .content{
     margin-top: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
