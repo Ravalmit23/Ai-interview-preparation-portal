@@ -60,18 +60,13 @@ body{
 .hero-section{
     display: flex;
     justify-content: space-evenly;
-    /* align-items: center; */
     margin-top: 80px;
     height:500px;
-    /* box-shadow: 0 15px 40px rgba(25, 24, 24, 0.15); */
     border-radius: 20px;
     color: white;
 }
 .right-side{
-    /* box-shadow: 0 15px 40px rgba(25, 24, 24, 0.15); */
-    /* box-shadow: 0 25px 60px rgba(0,0,0,0.35); */
     border-radius: 10px;
-    /* height: auto; */
 }
 .right-side img{
     height: 300px;
@@ -86,12 +81,10 @@ body{
     margin-bottom: 10px;
 }
 .hero-title span{
-    /* margin-bottom:5px; */
     font-size: 1.7rem;
     margin-top: 10px;
 }
 .left-side #text{
-    /* color: #2563eb; */
     color: purple;
 }
 .left-side #element{
@@ -100,7 +93,6 @@ body{
     color: purple;
     font-size: 1.5rem;
     min-height: 70px;
-    /* margin-top: 30px; */
 }
 .left-side #hero-btn,#top-btn{
     height: 35px;
@@ -145,7 +137,6 @@ body{
 .student-area,.admin-area{
     display: flex;
     flex-direction: column;
-    height: auto; 
     border-radius: 20px;
     width: 300px;
     min-height: 280px;
@@ -181,11 +172,17 @@ body{
     transform: scale(1.05);
     cursor: pointer;
 }
-.heading h1,p{
+.heading h1{
     margin-top: 10px;
     color: white;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.heading p{
+    color:white;
+    text-align: center;
+    margin-top: 2px;
+    font-family: 'Times New Roman', Times, serif;
 }
 .student-area:hover{
     cursor: pointer;
@@ -200,9 +197,56 @@ body{
     transform: scale(1.01);
     border:2px solid #2563eb;
 }
+
+/* footer area */
+
 .footer-area{
-    height: 200px;
+    height: 230px;
     width: 100%;
     margin-top: 20px;
+    background-color: #eff6ff;
+}
+.footer-area span{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.3rem;
+}
+
+.footer-area #ai{
+    color:purple;
+    font-size: 1.4rem;
+}
+.footer-area .content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    
+}
+.top-area1{
+    display: flex;
+    justify-content: space-evenly;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: purple;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.top-area h2{
+    text-align: center;
+}
+.content{
+    margin-top: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.footer-area #copy-right{
+    text-align: center;
+    margin-top: 30px;
+    color: purple;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.content a:hover{
+    transform: scale(1.03);
+    transition: 0.3s ease;
+    color: purple;
+    cursor: pointer;
 }
 
