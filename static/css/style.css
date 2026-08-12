@@ -133,6 +133,9 @@ body{
     margin-bottom: 20px;
 
 }
+a{
+    text-decoration: none;
+}
 .student-area,.admin-area{
     display: flex;
     flex-direction: column;
