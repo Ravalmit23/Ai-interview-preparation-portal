@@ -1,0 +1,96 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    background-color:#0f172a;
+}
+.right-side{
+    width: 50%;
+}
+.right-side img{
+    height: 500px;
+    width: 90%;
+    border-radius: 20px;
+}
+.left-side{
+    width: 50%;
+    border: 0.9px solid black;
+    height: 523px;
+    border-radius: 20px;
+    color:white;
+    border: 0.9px solid white;
+    font-family: "inter",sans-serif;
+}
+.left-side #logo,#ai{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.3rem;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+.left-side #ai{
+    color: purple;
+    font-size: 1.4rem;
+}
+.left-side input{
+ width: 90%;
+ padding: 14px 16px;
+ border-radius: 12px;
+ background: rgba(255,255,255,0.08);
+ color:white;
+ font-size: 15px;
+ outline: none;
+ transition: 0.3s ease;
+ border: none;
+ margin-top: 5px;
+ margin-bottom: 20px;
+}
+.input:focus{
+    border-color: #c026d3;
+    box-shadow:0 0 10px rgba(192,38,211,0.25);
+}
+.left-side a{
+    color: blue;
+    cursor: pointer;
+}
+.btn{
+    width: 90%;
+    height: 30px;
+    border-radius: 20px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: purple;
+    color:white;
+    font-size: 1.02rem;
+    margin-left: 20px;
+}
+#account{
+    color: blue;
+    cursor: pointer;
+}
+.left-side h4{
+    text-align: center;
+    font-weight: 700;
+}
+#admin-login{
+    color: blue;
+    margin-left: 50px;
+    cursor: pointer;
+}
+.left-side #cpy-right{
+    margin-left: 50px;
+    font-size: 1.02rem;
+}
+#bottom-part{
+    margin-left: 80px;
+}
+input:hover{
+    transform: scale(1.01);
+    transition: 0.3s ease;
+}
+button:hover{
+    transform: scale(1.05);
+    transition: 03s ease;
+    cursor: pointer;
+}

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}?v=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>log-in page</title>
@@ -10,10 +11,27 @@
 <body>
     <div class="container">
         <div class="right-side">
-        <img src="{% static 'images/images1.avif' %}">
+        <img src="{% static 'images/image2.png' %}">
+        </div>
         <div class="left-side">
-            <img src="{% static 'images/images.avif' %}">
+            <span id="logo">🧠InterviewMentor<span id="ai">AI</span></span>
+            <h3>Welcome Back Students</h3>
+            <p>sign-in to continue your preparation journey</p>
+            <div class="input-group">
+            <label id="log-in">👤 E-mail</label><br>
+            <input type="email" placeholder="Enter your E-mail">
+            </div>
+            <div class="input-group">
+            <label id="log-in">👤 Password</label><br>
+            <input type="password" placeholder="Password must be 8 character">
+            <a>Forget password?</a>
+            </div><br>
+            <button class="btn">Login</button>
+            <span id="bottom-part">Dont have account?<span id="account">Create Account</span></span>
+            <h4>Access For Diffrent Role</h4>
+           <span id="bottom-part">Change Role  <span id="admin-login"> Admin Log-in</span></span>
+            <p id="cpy-right">@2026 🧠InterviewMentorAI . All Rights Reserved</p>
         </div>
     </div>
 </body>
-</html>
+</html>/
