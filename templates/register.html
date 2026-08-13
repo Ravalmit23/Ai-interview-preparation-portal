@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}?v=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration page</title>
+</head>
+
+<body>
+    <h1>®️Register to start your preparation journey</h1>
+    <div class="container">
+        <div class="register">
+            <div class="input-group">
+                <label>👥Full name</label><br>
+                <input type="text">
+            </div>
+            <div class="input-group">
+                <label>📱Mobile-No</label><br>
+                <input type="number">
+            </div>
+
+            <div class="input-group">
+                <label>📩E-mail</label><br>
+                <input type="email">
+            </div>
+            <div class="input-group">
+                <label>🔐Password</label><br>
+                <input type="password">
+            </div>
+            <button>Submit</button>
+        </div>
+    </div>
+</body>
+
+</html>
