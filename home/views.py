@@ -11,3 +11,5 @@ def register(request):
     return render(request,'register.html')
 def admin(request):
     return render(request,'login2.html')
+def practice(request):
+    return render(request,'practice.html')

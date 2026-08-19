@@ -11,7 +11,7 @@
         <div class="navigation-bar">
             <span id="logo">🧠InterviewMentor<span id="ai">AI</span></span>
             <a>Home</a>
-            <a>Practice</a>
+            <a href="{% url 'practice' %}">Practice</a>
             <a>Features</a>
             <a href="{% url 'register' %}"><button>Register</button></a>
            <a href="{% url 'login' %}"><button>Log-in</button></a>
@@ -59,7 +59,7 @@
             <a>➡️Interview Quetion✅</a>
             <a>➡️Instant Feedback✅</a>
             <a>➡️Prformance Tracking✅</a>
-            <button>Enter Admin Portal ></button>
+           <a href="{% url 'login2' %}"> <button>Enter Admin Portal ></button></a>
         </div>
     </div>
     <!-- <hr id="content-line"> -->

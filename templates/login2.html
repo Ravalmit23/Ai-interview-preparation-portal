@@ -1,12 +1,32 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'css/login2.css' %}?v=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>admin login-page</title>
-    <link rel="stylesheet" href="login2.css">
+    <title>admin log-in page</title>
 </head>
 <body>
-    
+        <div class="left-side">
+            <span id="logo">🧠InterviewMentor<span id="ai">AI</span></span>
+            <h3>Welcome Back Admin!</h3>
+            <div class="input-group">
+            <label id="log-in">👤 E-mail</label><br>
+            <input type="email" placeholder="Enter your E-mail">
+            </div>
+            <div class="input-group">
+            <label id="log-in">👤 Password</label><br>
+            <input type="password" placeholder="Password must be 8 character">
+            <a>Forget password?</a>
+            </div><br>
+            <button class="btn">Login</button>
+            <!-- <span id="bottom-part">Dont have account?<a href="{% url 'register' %}"><span id="account">Create Account</span></span></a> -->
+            <h4>Access For Diffrent Role</h4>
+          <span id="bottom-part">Change Role</span><a href="{% url 'login' %}"><span id="student-login"> student-login</span></a>
+            <p id="cpy-right">@2026 🧠InterviewMentorAI . All Rights Reserved</p>
+        </div>
+    </div>
 </body>
-</html>
+</html>/
