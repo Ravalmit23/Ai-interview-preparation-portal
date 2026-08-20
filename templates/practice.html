@@ -1,12 +1,42 @@
+{%load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{% static 'css/practice.css' %}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/practice.css' %}?v=1">
     <title>practice page</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="navigation-bar">
+            <span id="logo">🧠InterviewMentor<span id="ai">AI</span></span>
+            <a>Home</a>
+            <a href="{% url 'practice' %}" id="practice">Practice</a>
+            <a>Features</a>
+            <a href="{% url 'register' %}"><button>Register</button></a>
+           <a href="{% url 'login' %}"><button>Log-in</button></a>
+        </div>
+        <div class="hero-section">
+            <div class="left-side">
+                <h1>PRACTICE. IMPROVE. <br><span> GET HIRED.</span></h1>
+                <p>
+                    Practice smarter, build YOUR
+                confidence,
+                        And prepare for your NEXT
+                interview with AI
+                </p>
+               <a> <button>START PRACTICING</button></a>
+            </div>
+            <div class="right-side">
+            <img src="{% static 'images/practice2.jpeg' %}">
+            </div>
+        </div>
+        <div class="content-area">
+            <button>popular categories</button>
+            <h1>choose what you want to practice</h1>
+            <p>select a topic or role and start your AI interview practice</p>
+        </div>
+    </div>
 </body>
 </html>

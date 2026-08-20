@@ -5,6 +5,10 @@
 body{
      background-color: #0f172a;
 }
+#home
+{
+    color: purple;
+}
 .navigation-bar #logo{
     color:black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

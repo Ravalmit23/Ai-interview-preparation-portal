@@ -1,0 +1,111 @@
+.navigation-bar #logo{
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.navigation-bar #ai{
+    /* color:#4361ee; */
+    color: purple;
+}
+.navigation-bar span{
+    font-size: 1.3rem;
+}
+.navigation-bar{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #eff6ff;
+    height: 70px;
+}
+.navigation-bar #logo:hover{
+    text-decoration: none;
+}
+.navigation-bar a{
+    text-decoration: none;
+    margin-top: 5px;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+}
+.navigation-bar a:hover{
+    color: purple;
+    transition: 0.3s ease;
+    transform: scale(1.03);
+}
+.navigation-bar button{
+    height: 30px;
+    width: 70px;
+    background-color: purple;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+#practice{
+    color: purple;
+    text-decoration: none;
+}
+.hero-section{
+    display: flex;
+    min-height: 400px;
+    justify-content: space-evenly;
+    /* padding: 50px 7%; */
+    background-color: #f8f7ff;
+}
+.left-side{
+    width: 30%;
+    margin-left: 10px;
+}
+.left-side h1{
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: 800;
+    color:#17203a;
+}
+.left-side h1 span{
+    color: #b21bd6;
+}
+.left-side p{
+    font-size: 14px;
+    line-height: 1.6;
+    color:#555;
+    margin: 25px 0;
+    max-width: 500px;
+
+}
+.left-side button{
+    display: inline-block;
+    padding: 14px 20px;
+    background: #b21bd6;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+}
+.left-side button:hover{
+    border: 0.9px solid black;
+    cursor: pointer;
+}
+
+.right-side{
+    width: 100%;
+
+}
+.right-side img{
+    width: 100%;
+    display: block;
+}
+.content-area h1,p{
+    text-align: center;
+}
+.content-area button{
+    color:white;
+    height: 30px;
+    background: #b21bd6;
+    border-radius: 14px;
+    margin-left:350px;
+    border: none;
+    margin-top: 10px;
+}
