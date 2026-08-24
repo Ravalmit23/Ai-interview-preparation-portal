@@ -141,3 +141,6 @@
     transition: 0.2s ease;
     cursor: pointer;
 }
+.cards p{
+    font-weight: 800;
+}
