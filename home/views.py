@@ -1,15 +1,23 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
-from django.shortcuts import render
 
 def index(request):
     return render(request, 'index.html')
+
+
 def login(request):
-    return render(request,'login.html')
+    return render(request, 'login.html')
+
+
 def register(request):
-    return render(request,'register.html')
+    return render(request, 'register.html')
+
+
 def admin(request):
-    return render(request,'login2.html')
+    return render(request, 'login2.html')
+
+
+@login_required(login_url='login')
 def practice(request):
-    return render(request,'practice.html')
+    return render(request, 'practice.html')
