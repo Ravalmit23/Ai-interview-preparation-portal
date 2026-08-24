@@ -109,3 +109,35 @@
     border: none;
     margin-top: 10px;
 }
+.cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.cards button{
+    height: 30px;
+    color: purple;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    border: none;
+    font-weight: 600;
+}
+.cards1{
+     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+     height: 150px;
+     padding: 10px 30px;
+     border-radius: 14px;
+}
+
+.cards2{
+     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+     background: transparent;
+     height: 150px;
+     padding: 10px 30px;
+     border-radius: 14px;
+}
+.cards :hover{
+    transform: scale(1.02);
+    transition: 0.2s ease;
+    cursor: pointer;
+}

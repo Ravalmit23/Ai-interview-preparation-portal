@@ -18,6 +18,6 @@ def admin(request):
     return render(request, 'login2.html')
 
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def practice(request):
     return render(request, 'practice.html')
