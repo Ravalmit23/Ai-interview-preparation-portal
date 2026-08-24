@@ -1,0 +1,77 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feature page</title>
+     <link rel="stylesheet" href="{% static 'css/feature.css' %}">
+</head>
+<body>
+     <div class="container">
+        <div class="navigation-bar">
+            <span id="logo">🧠InterviewMentor<span id="ai">AI</span></span>
+            <a id="home">Home</a>
+            <a href="{% url 'practice' %}">Practice</a>
+            <a id="feature">Features</a>
+            <a href="{% url 'register' %}"><button>Register</button></a>
+           <a href="{% url 'login' %}"><button>Log-in</button></a>
+        </div>
+        <div class="hero-section">
+            <div class="left-side">
+                <h1>Powerful features to <br> Ace your Interview</h1>
+                <p>
+                    everything you need to prepare, practice and
+                    build confidence with ai -powered insights
+                </p>
+               <a> <button>GET START NOW </button></a>
+            </div>
+            <div class="right-side">
+            <img src="{% static 'images/Features.jpeg' %}">
+            </div>
+        </div>
+        <div class="content-area">
+            <button>What we offered</button>
+            <h1>Everything you Need to succeed</h1>
+            <p>our platfrom is built with advanced Ai technology and expert-designed content to 
+                help you to crack your interview</p>
+        </div>
+        <div class="cards">
+            <div class="cards1">
+               <!-- <img src="https://img.icons8.com/?size=100&id=l75OEUJkPAk4&format=png&color=000000"> -->
+                <h3>🤖Ai mock interview</h3>
+                <p>➡️Real-time ai interview with role-specific<br> Questions </p>
+            </div>
+            <div class="cards1">
+                <h3>📊instant Ai feedback</h3>
+                <p>➡️Get feedback on your answer<br>,tone and confidence</p>
+           </div>
+            <div class="cards1">
+                <h3>📈performance Analytics</h3>
+                <p>➡️Track your progress with smart <br>anatytics and improve with insights</p>
+            </div>
+            
+        </div>
+        <br><br>
+        <div class="cards">
+            <div class="cards2">
+                <h3>👥Role Based Practice</h3>
+                <p>➡️Practice for diffrent roles like <br>python-dev,sql-dev,ai-expert</p>
+    
+            </div>
+            <div class="cards2">
+                <h3>📑Question Bank</h3>
+                <p>➡️Thosand of hand-driven questions <br>from top compnies and categories</p>
+                
+            </div>
+            <div class="cards2">
+                <h3>🟩Resume & profile Tip</h3>
+                <p>➡️Get ai suggestion to improve your<br> resume and linkedin profile</p>
+                
+            </div>
+            
+        </div>
+
+    </div>
+</body>
+</html>

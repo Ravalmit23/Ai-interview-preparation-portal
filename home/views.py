@@ -13,9 +13,11 @@ def login(request):
 def register(request):
     return render(request, 'register.html')
 
-
 def admin(request):
     return render(request, 'login2.html')
+
+def feature(request):
+    return render(request,'feature.html')
 
 
 # @login_required(login_url='login')
