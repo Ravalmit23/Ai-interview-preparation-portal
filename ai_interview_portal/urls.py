@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from home import views
 from django.urls import path,include
+from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +28,10 @@ urlpatterns = [
     path('login2/',views.admin,name='login2'),
     path('practice/',views.practice,name='practice'),
     path('feature/',views.feature,name='feature'),
+    path('interview',views.interview,name='interview'),
+    path('interview/<str:technology>/',views.interview,name='interview'),
+    path('interview/', views.interview, name='interview'),
+    path('submit-answer/', views.submit_answer, name='submit_answer'),
+    path('admin/',admin.site.urls),
+    path('',include('home.urls')),
 ]

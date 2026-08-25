@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f7f5ff;
+    color: #25213b;
+}
+
+/* Main container */
+
+.interview-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+}
+
+/* Header */
+
+.interview-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #9b27d8, #e000c7);
+    color: white;
+    padding: 9px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.interview-header h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.interview-header p {
+    color: #777;
+    font-size: 17px;
+}
+
+
+/* Question Card */
+
+.question-card {
+    background: white;
+    padding: 35px;
+    margin-bottom: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(80, 50, 120, 0.12);
+
+    border: 1px solid #eee8ff;
+}
+
+.question-number {
+    display: inline-block;
+
+    background: #f1e5ff;
+    color: #8c21c7;
+
+    padding: 8px 15px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.question-card h2 {
+    font-size: 23px;
+    line-height: 1.5;
+
+    margin-bottom: 25px;
+}
+
+
+/* Answer box */
+
+textarea {
+    width: 100%;
+
+    min-height: 180px;
+
+    resize: vertical;
+
+    border: 2px solid #e6def5;
+
+    border-radius: 14px;
+
+    padding: 18px;
+
+    font-size: 16px;
+
+    font-family: Arial, sans-serif;
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+textarea:focus {
+    border-color: #a927d8;
+
+    box-shadow: 0 0 0 4px rgba(169, 39, 216, 0.1);
+}
+
+textarea::placeholder {
+    color: #aaa;
+}
+
+
+/* Submit button */
+
+button {
+    margin-top: 20px;
+
+    border: none;
+
+    background: linear-gradient(90deg, #9c27d8, #d600c8);
+
+    color: white;
+
+    padding: 13px 25px;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(156, 39, 216, 0.3);
+}
+
+
+/* No questions */
+
+.empty {
+    background: white;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(80, 50, 120, 0.1);
+}
+
+.empty h2 {
+    margin-bottom: 10px;
+}
+
+.empty p {
+    color: #777;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .interview-container {
+        width: 94%;
+        margin: 30px auto;
+    }
+
+    .interview-header h1 {
+        font-size: 32px;
+    }
+
+    .question-card {
+        padding: 22px;
+    }
+
+    .question-card h2 {
+        font-size: 19px;
+    }
+
+    textarea {
+        min-height: 150px;
+    }
+}
