@@ -26,7 +26,7 @@
                         And prepare for your NEXT
                 interview with AI
                 </p>
-               <a> <button>START PRACTICING</button></a>
+               <a href="{% url 'interview' %}"> <button>START PRACTICING</button></a>
             </div>
             <div class="right-side">
             <img src="{% static 'images/practice2.jpeg' %}">
@@ -47,7 +47,7 @@
             <div class="cards1">
                 <h3>🔷Data structure<br>&algorithm</h3>
                 <p>50+ Questions</p>
-                <button>start practicing➡️</button>
+                <a href="{% url 'interview' 'dsa'%}"> <button>start practicing➡️</button></a>
             </div>
             <div class="cards1">
                 <h3>🗄️SQL<br>database</h3>

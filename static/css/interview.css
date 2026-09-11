@@ -89,9 +89,7 @@ body {
 
 textarea {
     width: 100%;
-
-    min-height: 180px;
-
+    min-height: 100px;
     resize: vertical;
 
     border: 2px solid #e6def5;
