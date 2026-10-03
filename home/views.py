@@ -108,59 +108,28 @@ def register(request):
 # =====================================================
 # LOGIN
 # =====================================================
-
 def login(request):
-
     if request.method == 'POST':
-
-        email = request.POST.get(
-            'email',
-            ''
-        ).strip()
-
-        password = request.POST.get(
-            'password',
-            ''
-        )
-
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '')
 
         try:
-
             student = Login.objects.get(
                 email=email,
                 password=password
             )
 
+            request.session['student_id'] = student.id
+            request.session.save()
 
-            # Store student ID
-
-            request.session[
-                'student_id'
-            ] = student.id
-
-
-            return redirect(
-                'dashboard'
-            )
-
+            return redirect('dashboard')
 
         except Login.DoesNotExist:
+            return render(request, 'login.html', {
+                'error': 'Invalid email or password.'
+            })
 
-            return render(
-                request,
-                'login.html',
-                {
-                    'error':
-                    'Invalid email or password.'
-                }
-            )
-
-
-    return render(
-        request,
-        'login.html'
-    )
-
+    return render(request, 'login.html')
 
 # =====================================================
 # LOGIN2
@@ -248,26 +217,29 @@ def dashboard(request):
 # =====================================================
 
 def practice(request):
+    student_id = request.session.get('student_id')
+
+    # User is not logged in
+    if not student_id:
+        return redirect('login')
+
+    try:
+        Login.objects.get(id=student_id)
+    except Login.DoesNotExist:
+        request.session.flush()
+        return redirect('login')
 
     technologies = Technology.objects.all().order_by(
         'technology_name'
     )
 
-
     return render(
-
         request,
-
         'practice.html',
-
         {
-            'technologies':
-            technologies
+            'technologies': technologies
         }
-
     )
-
-
 # =====================================================
 # TECHNOLOGY / INTERVIEW
 # =====================================================
@@ -328,255 +300,166 @@ def technology_view(
 # =====================================================
 
 def submit_answer(request):
-
-    # Only POST allowed
-
     if request.method != 'POST':
+        return redirect('practice')
 
-        return redirect(
-            'practice'
-        )
-
-
-    # -----------------------------------------
-    # GET STUDENT
-    # -----------------------------------------
-
-    student_id = request.session.get(
-        'student_id'
-    )
-
+    student_id = request.session.get('student_id')
 
     if not student_id:
-
-        return redirect(
-            'login'
-        )
-
+        return redirect('login')
 
     try:
-
-        student = Login.objects.get(
-            id=student_id
-        )
-
+        student = Login.objects.get(id=student_id)
     except Login.DoesNotExist:
-
         request.session.flush()
+        return redirect('login')
 
-        return redirect(
-            'login'
-        )
-
-
-    # -----------------------------------------
-    # GET TECHNOLOGY
-    # -----------------------------------------
-
-    technology_id = request.POST.get(
-        'technology_id'
-    )
-
+    technology_id = request.POST.get('technology_id')
 
     if not technology_id:
-
-        return redirect(
-            'practice'
-        )
-
+        return redirect('practice')
 
     try:
-
         selected_technology = Technology.objects.get(
-
             id=technology_id
-
         )
-
     except Technology.DoesNotExist:
-
-        return redirect(
-            'practice'
-        )
-
-
-    # -----------------------------------------
-    # GET QUESTIONS
-    # -----------------------------------------
+        return redirect('practice')
 
     questions = Question.objects.filter(
-
         technology=selected_technology
-
-    ).order_by(
-
-        'id'
-
-    )
-
+    ).order_by('id')
 
     total_questions = questions.count()
 
-
-    # -----------------------------------------
-    # CREATE RESULT FIRST
-    # -----------------------------------------
-
     interview_result = Result.objects.create(
-
         student=student,
-
         technology=selected_technology,
-
         score=0,
-
         total_questions=total_questions,
-
         percentage=0
-
     )
 
-
-    total_score = 0
-
-
-    # -----------------------------------------
-    # PROCESS EACH QUESTION
-    # -----------------------------------------
+    total_percentage = 0
 
     for question in questions:
 
-
         student_answer = request.POST.get(
-
             f'answer_{question.id}',
-
             ''
-
         ).strip()
 
-
-        # -------------------------------------
-        # CORRECT ANSWER
-        # -------------------------------------
-
         correct_answer = (
-
             question.correct_answer or ''
-
         ).strip().lower()
 
+        submitted_answer = student_answer.lower()
 
-        submitted_answer = (
+        question_percentage = 0
 
-            student_answer
+        if submitted_answer and correct_answer:
 
-        ).strip().lower()
+            # Convert answers into words
+            correct_words = set(
+                correct_answer.replace(
+                    ',', ' '
+                ).replace(
+                    '.', ' '
+                ).split()
+            )
 
+            submitted_words = set(
+                submitted_answer.replace(
+                    ',', ' '
+                ).replace(
+                    '.', ' '
+                ).split()
+            )
 
-        # -------------------------------------
-        # CHECK ANSWER
-        # -------------------------------------
+            # Remove very common words
+            stop_words = {
+                'the',
+                'is',
+                'a',
+                'an',
+                'and',
+                'or',
+                'to',
+                'of',
+                'in',
+                'for',
+                'with',
+                'on',
+                'it',
+                'this',
+                'that',
+                'are',
+                'was',
+                'be',
+                'as'
+            }
 
-        is_correct = False
+            correct_words -= stop_words
+            submitted_words -= stop_words
 
-        question_score = 0
+            if correct_words:
 
+                matched_words = (
+                    correct_words &
+                    submitted_words
+                )
 
-        if (
+                match_percentage = (
+                    len(matched_words) /
+                    len(correct_words)
+                ) * 100
 
-            submitted_answer
+                question_percentage = round(
+                    match_percentage
+                )
 
-            and correct_answer
+                # Maximum 100%
+                if question_percentage > 100:
+                    question_percentage = 100
 
-        ):
+            # Exact answer
+            if submitted_answer == correct_answer:
+                question_percentage = 100
 
+        # Consider 50%+ as correct
+        is_correct = question_percentage >= 50
 
-            # Simple text matching
-
-            if (
-
-                correct_answer
-                in submitted_answer
-
-                or
-
-                submitted_answer
-                in correct_answer
-
-            ):
-
-                is_correct = True
-
-                question_score = 1
-
-
-        # Add score
-
-        total_score += question_score
-
-
-        # -------------------------------------
-        # SAVE STUDENT ANSWER
-        # -------------------------------------
+        total_percentage += question_percentage
 
         StudentAnswer.objects.create(
-
             result=interview_result,
-
             question=question,
-
             student_answer=student_answer,
-
-            score=question_score,
-
+            score=question_percentage,
             is_correct=is_correct
-
         )
 
-
-    # -----------------------------------------
-    # CALCULATE PERCENTAGE
-    # -----------------------------------------
-
+    # Calculate overall percentage
     if total_questions > 0:
-
-        percentage = (
-
-            total_score
-            / total_questions
-
-        ) * 100
-
+        overall_percentage = (
+            total_percentage /
+            total_questions
+        )
     else:
+        overall_percentage = 0
 
-        percentage = 0
-
-
-    # -----------------------------------------
-    # UPDATE RESULT
-    # -----------------------------------------
-
-    interview_result.score = (
-        total_score
+    interview_result.score = round(
+        total_percentage
     )
 
-    interview_result.percentage = (
-        percentage
+    interview_result.percentage = round(
+        overall_percentage,
+        2
     )
 
     interview_result.save()
 
-
-    # -----------------------------------------
-    # GO TO DASHBOARD
-    # -----------------------------------------
-
-    return redirect(
-        'dashboard'
-    )
-
-
+    return redirect('dashboard')
 # =====================================================
 # FEATURE
 # =====================================================
@@ -587,3 +470,7 @@ def feature(request):
         request,
         'feature.html'
     )
+
+def logout_view(request):
+    request.session.flush()
+    return redirect('login')

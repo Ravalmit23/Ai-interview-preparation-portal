@@ -105,7 +105,8 @@ class Result(models.Model):
     technology = models.ForeignKey(
         Technology,
         on_delete=models.CASCADE,
-        related_name='results'
+        related_name='results',
+        db_column='technology'
     )
 
     score = models.IntegerField(default=0)
@@ -114,6 +115,11 @@ class Result(models.Model):
 
     date = models.DateTimeField(default=timezone.now)
 
+    def __str__(self):
+        return (
+            f"{self.student.name if self.student else 'Unknown'} - "
+            f"{self.technology.technology_name if self.technology else 'Unknown Technology'}"
+        )
     def __str__(self):
         student_name = self.student.name if self.student else "Unknown Student"
 

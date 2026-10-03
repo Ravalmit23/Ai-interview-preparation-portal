@@ -3,39 +3,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}?v=1">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>log-in page</title>
+
+    <title>Login - AI Interview Portal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 430px;
+        }
+
+        .login-card {
+            background: white;
+
+            padding: 40px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.10);
+        }
+
+        .logo {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #111827;
+            color: white;
+
+            border-radius: 16px;
+
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+
+            color: #111827;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            text-align: center;
+
+            color: #6b7280;
+
+            margin-bottom: 30px;
+
+            font-size: 14px;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #b91c1c;
+
+            padding: 12px 14px;
+
+            border-radius: 9px;
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
+
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #374151;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 9px;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, 0.10);
+        }
+
+        .login-btn {
+            width: 100%;
+
+            border: none;
+
+            padding: 14px;
+
+            margin-top: 8px;
+
+            background: #111827;
+
+            color: white;
+
+            border-radius: 9px;
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #2563eb;
+
+            transform: translateY(-1px);
+        }
+
+        .register-text {
+            text-align: center;
+
+            margin-top: 25px;
+
+            color: #6b7280;
+
+            font-size: 14px;
+        }
+
+        .register-text a {
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            text-align: center;
+
+            margin-top: 18px;
+        }
+
+        .back-home a {
+            color: #6b7280;
+
+            text-decoration: none;
+
+            font-size: 13px;
+        }
+
+        .back-home a:hover {
+            color: #111827;
+        }
+
+        @media (max-width: 480px) {
+
+            .login-card {
+                padding: 28px 22px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-   
-    <form method="post">
-         {% csrf_token%}
-    <div class="container">
-        <div class="right-side">
-        <img src="{% static 'images/image2.png' %}">
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <div class="logo">
+            AI
         </div>
-        <div class="left-side">
-            <span id="logo">🧠InterviewMentor<span id="ai">AI</span></span>
-            <h3>Welcome Back Students</h3>
-            <p>sign-in to continue your preparation journey</p>
-            <div class="input-group">
-            <label id="log-in">👤 E-mail</label><br>
-            <input type="email" placeholder="Enter your E-mail" name="email">
+
+        <h1>Welcome Back</h1>
+
+        <p class="subtitle">
+            Login to continue your AI interview practice.
+        </p>
+
+
+        {% if error %}
+            <div class="error-message">
+                {{ error }}
             </div>
-            <div class="input-group">
-            <label id="log-in">👤 Password</label><br>
-            <input type="password" placeholder="Password must be 8 character" name="password">
-            <a>Forget password?</a>
-            </div><br>
-            <button class="btn">Login</button>
-            <span id="bottom-part">Dont have account?<a href="{% url 'register' %}"><span id="account">Create Account</span></span></a>
-            <h4>Access For Diffrent Role</h4>
-           <span id="bottom-part">Change Role <a href="{% url 'login2' %}"> <span id="admin-login"> Admin Log-in</span></span></a>
-            <p id="cpy-right">@2026 🧠InterviewMentorAI . All Rights Reserved</p>
+        {% endif %}
+
+
+        <form method="POST" action="{% url 'login' %}">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autocomplete="email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Login
+            </button>
+
+        </form>
+
+
+        <div class="register-text">
+
+            Don't have an account?
+
+            <a href="{% url 'register' %}">
+                Create Account
+            </a>
+
         </div>
+
+
+        <div class="back-home">
+
+            <a href="{% url 'index' %}">
+                ← Back to Home
+            </a>
+
+        </div>
+
     </div>
-    </form>
+
+</div>
+
 </body>
 </html>
