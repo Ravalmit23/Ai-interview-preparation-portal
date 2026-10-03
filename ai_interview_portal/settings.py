@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'ai_interview_portal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ai_interview_preparation_portal',
+        'USER':'root',
+        'PASSWORD':'Mit@0104',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
     }
 }
 

@@ -9,6 +9,9 @@
     <title>log-in page</title>
 </head>
 <body>
+   
+    <form method="post">
+         {% csrf_token%}
     <div class="container">
         <div class="right-side">
         <img src="{% static 'images/image2.png' %}">
@@ -19,11 +22,11 @@
             <p>sign-in to continue your preparation journey</p>
             <div class="input-group">
             <label id="log-in">👤 E-mail</label><br>
-            <input type="email" placeholder="Enter your E-mail">
+            <input type="email" placeholder="Enter your E-mail" name="email">
             </div>
             <div class="input-group">
             <label id="log-in">👤 Password</label><br>
-            <input type="password" placeholder="Password must be 8 character">
+            <input type="password" placeholder="Password must be 8 character" name="password">
             <a>Forget password?</a>
             </div><br>
             <button class="btn">Login</button>
@@ -33,5 +36,6 @@
             <p id="cpy-right">@2026 🧠InterviewMentorAI . All Rights Reserved</p>
         </div>
     </div>
+    </form>
 </body>
-</html>/
+</html>

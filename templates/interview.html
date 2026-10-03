@@ -1,55 +1,115 @@
-{% for question in questions %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/interview.css' %}">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ technology.technology_name }}
+        Interview
+    </title>
+
 </head>
+
+
 <body>
-    
 
-<div class="question-card">
 
-    <div class="question-number">
-        Question {{ forloop.counter }}
-    </div>
+<div class="interview-container">
 
-    <h2>{{ question.question }}</h2>
 
-    <form method="POST" action="{% url 'submit_answer' %}">
+    <h1>
+        {{ technology.technology_name }}
+        Interview
+    </h1>
+
+
+    <p>
+        Answer all questions below.
+    </p>
+
+
+    <form
+        method="POST"
+        action="{% url 'submit_answer' %}"
+    >
+
         {% csrf_token %}
 
-        <input required
+
+        <!-- TECHNOLOGY ID -->
+
+        <input
             type="hidden"
-            name="question_id"
-            value="{{ question.id }}"
+            name="technology_id"
+            value="{{ technology.id }}"
         >
 
-        <textarea
-            name="answer"
-            rows="5"
-            placeholder="Write your answer here..."
-            required
-        ></textarea>
 
-        <button type="submit">
-            Submit Answer
+        {% for question in questions %}
+
+
+        <div class="question-card">
+
+
+            <h2>
+
+                Question {{ forloop.counter }}
+
+            </h2>
+
+
+            <p>
+
+                {{ question.question_text }}
+
+            </p>
+
+
+            <label>
+
+                Your Answer
+
+            </label>
+
+
+            <textarea
+                name="answer_{{ question.id }}"
+                rows="7"
+                placeholder="Write your answer here..."
+                required
+            ></textarea>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+        <button
+            type="submit"
+        >
+
+            Submit Interview
+
         </button>
+
 
     </form>
 
+
 </div>
 
-{% empty %}
 
-<div class="question-card">
-    <h2>No questions available 😕</h2>
-    <p>Questions haven't been added yet.</p>
-</div>
-
-{% endfor %}
 </body>
+
 </html>

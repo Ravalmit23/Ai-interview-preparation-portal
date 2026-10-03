@@ -1,0 +1,441 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Student Dashboard
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f7fb;
+
+            color: #1f2937;
+        }
+
+
+        .container {
+
+            width: 92%;
+
+            max-width: 1100px;
+
+            margin: 40px auto;
+        }
+
+
+        /* STUDENT HEADER */
+
+        .student-header {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            margin-bottom: 30px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.08);
+        }
+
+
+        .student-header h1 {
+
+            margin: 0 0 10px;
+
+            font-size: 35px;
+        }
+
+
+        .student-header p {
+
+            color: #6b7280;
+        }
+
+
+        /* RESULT */
+
+        .result-card {
+
+            background: white;
+
+            padding: 30px;
+
+            margin-bottom: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.08);
+        }
+
+
+        .result-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .result-header h2 {
+
+            margin: 0;
+        }
+
+
+        .score {
+
+            font-size: 28px;
+
+            font-weight: bold;
+        }
+
+
+        .percentage {
+
+            color: #6b7280;
+        }
+
+
+        /* QUESTION */
+
+        .question-result {
+
+            border-top: 1px solid #e5e7eb;
+
+            padding: 25px 0;
+        }
+
+
+        .question-result:first-child {
+
+            border-top: none;
+        }
+
+
+        .question {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            line-height: 1.6;
+
+            margin-bottom: 15px;
+        }
+
+
+        .label {
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        .answer {
+
+            background: #f3f4f6;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            margin-bottom: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        .correct {
+
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            font-weight: bold;
+        }
+
+
+        .wrong {
+
+            display: inline-block;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            background: #fee2e2;
+
+            color: #991b1b;
+
+            font-weight: bold;
+        }
+
+
+        .empty {
+
+            background: white;
+
+            padding: 50px;
+
+            text-align: center;
+
+            border-radius: 18px;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =================================
+         STUDENT INFORMATION
+    ================================== -->
+
+
+    <div class="student-header">
+
+
+        <h1>
+
+            Welcome,
+            {{ student.name }}
+
+            👋
+
+        </h1>
+
+
+        <p>
+
+            {{ student.email }}
+
+        </p>
+
+
+    </div>
+
+
+
+    <!-- =================================
+         RESULTS
+    ================================== -->
+
+
+    {% for result in results %}
+
+
+    <div class="result-card">
+
+
+        <!-- RESULT HEADER -->
+
+
+        <div class="result-header">
+
+
+            <div>
+
+                <h2>
+
+                    {{ result.technology.technology_name }}
+
+                </h2>
+
+
+                <p class="percentage">
+
+                    {{ result.date }}
+
+                </p>
+
+            </div>
+
+
+            <div class="score">
+
+                {{ result.score }}
+
+                /
+
+                {{ result.total_questions }}
+
+                <div class="percentage">
+
+                    {{ result.percentage|floatformat:0 }}%
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             QUESTION-WISE RESULTS
+        ================================== -->
+
+
+        {% for answer in result.answers.all %}
+
+
+        <div class="question-result">
+
+
+            <div class="question">
+
+                Question {{ forloop.counter }}:
+
+                {{ answer.question.question_text }}
+
+            </div>
+
+
+            <div class="label">
+
+                Your Answer:
+
+            </div>
+
+
+            <div class="answer">
+
+
+                {% if answer.student_answer %}
+
+                    {{ answer.student_answer }}
+
+                {% else %}
+
+                    <em>
+                        No answer submitted.
+                    </em>
+
+                {% endif %}
+
+
+            </div>
+
+
+            {% if answer.is_correct %}
+
+
+                <span class="correct">
+
+                    ✓ Correct
+
+                    &nbsp; | &nbsp;
+
+                    {{ answer.score }}/1
+
+                </span>
+
+
+            {% else %}
+
+
+                <span class="wrong">
+
+                    ✗ Wrong
+
+                    &nbsp; | &nbsp;
+
+                    {{ answer.score }}/1
+
+                </span>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+    {% empty %}
+
+
+    <div class="empty">
+
+        <h2>
+
+            No results yet.
+
+        </h2>
+
+
+        <p>
+
+            Complete an interview to see
+            your results here.
+
+        </p>
+
+    </div>
+
+
+    {% endfor %}
+
+
+</div>
+
+
+</body>
+
+</html>
